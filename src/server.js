@@ -5,7 +5,6 @@ const port = process.env.PORT;
 
 connectToDatabase()
   .then(() => {
-    console.log("database connected succesfully");
     app.listen(port, () => console.log(`express app started on port: ${port}`));
   })
   .catch((err) => {
