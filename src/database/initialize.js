@@ -7,12 +7,10 @@ dotenv.config();
 export async function connectToDatabase() {
   const password = process.env.DBPASSWORD;
   const user = process.env.DBUSER;
+  const host = process.env.HOST;
+  const port = process.env.DBPORT;
   const database = process.env.DATABASE;
-  const sequelize = new Sequelize(database, user, password, {
-    dialect: "mysql",
-    host: process.env.HOST,
-    port: process.env.DBPORT,
-    dialectModule: mysql,
-  });
+  const uri = `mysql://${user}:${password}@${host}:${port}/${database}`;
+  const sequelize = new Sequelize(uri);
   return sequelize.authenticate();
 }
