@@ -3,22 +3,24 @@ import newError from "../exception/error.js";
 export const register = async (
   firstName,
   lastName,
-  username,
-  phoneNumber,
+  dateOfBirth,
   email,
   password,
 ) => {
-  const user = User.findOne({ email });
+  const user = User.findOne({ where: { email } });
   if (user) {
     throw newError("user already exists", 400);
   }
   if (!user) {
-    User.create({
+    const newUser = await User.create({
       firstName,
       lastName,
-      phoneNumber,
+      dateOfBirth,
       email,
       password,
     });
+    await newUser.save();
+    delete newUser.password;
+    return newUser;
   }
 };

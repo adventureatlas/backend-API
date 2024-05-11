@@ -3,7 +3,6 @@ import User from "../database/model/user.js";
 import { Strategy as JwtStrategy } from "passport-jwt";
 import { ExtractJwt } from "passport-jwt";
 import dotenv from "dotenv";
-import User from "../database/model/user.js";
 dotenv.config();
 
 const jwtSecret = process.env.JWTSECRET;

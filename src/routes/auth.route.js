@@ -10,3 +10,5 @@ authRoute.post(
   validateBody(registerSchema),
   authController.register,
 );
+
+export default authRoute;

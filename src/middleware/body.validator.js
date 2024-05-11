@@ -1,9 +1,11 @@
 export const validateBody = (schema) => {
   return (req, res, next) => {
     const result = schema.validate(req.body);
-    if (!result.error) {
-      next();
+    if (result.error) {
+      res
+        .status(400)
+        .json({ message: "validation error", error: result.error });
     }
-    res.status(429).json({ message: "validation error", error: result.error });
+    next();
   };
 };
