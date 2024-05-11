@@ -16,7 +16,6 @@ export const register = async (
     User.create({
       firstName,
       lastName,
-      username,
       phoneNumber,
       email,
       password,
