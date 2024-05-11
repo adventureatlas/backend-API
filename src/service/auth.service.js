@@ -7,12 +7,13 @@ export const register = async (
   email,
   password,
 ) => {
-  const user = User.findOne({ where: { email } });
+  const user = await User.findOne({ where: { email } });
+  console.log("user", user);
   if (user) {
     throw newError("user already exists", 400);
   }
   if (!user) {
-    const newUser = await User.create({
+    const newUser = User.build({
       firstName,
       lastName,
       dateOfBirth,

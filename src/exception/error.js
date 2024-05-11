@@ -1,7 +1,7 @@
 const newError = (message, statusCode) => {
   const error = new Error(message);
   error.statusCode = statusCode;
-  return error;
+  throw error;
 };
 
 export default newError;
