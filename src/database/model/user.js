@@ -38,4 +38,8 @@ const User = sequelize.define(
   },
 );
 
+sequelize
+  .sync({ force: true })
+  .then(() => console.log("User table created"))
+  .catch((err) => console.log("error syncing tables", err));
 export default User;

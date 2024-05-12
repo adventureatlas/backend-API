@@ -21,7 +21,8 @@ export const register = async (
       password,
     });
     await newUser.save();
-    delete newUser.password;
-    return newUser;
+    const newUserObject = newUser.toJSON();
+    delete newUserObject.password;
+    return newUserObject;
   }
 };
