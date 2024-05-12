@@ -9,7 +9,7 @@ export const register = async (
 ) => {
   const user = await User.findOne({ where: { email } });
   console.log("user", user);
-  if (user) {
+  if (user !== null) {
     throw newError("user already exists", 400);
   }
   if (!user) {

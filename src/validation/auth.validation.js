@@ -10,10 +10,17 @@ export const registerSchema = Joi.object({
     .regex(/^(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>]).{8,}$/)
     .required()
     .messages({
-        'string.base': 'Password must be a string',
-        'string.empty': 'Password is required',
-        'string.min': 'Password must be at least 8 characters long',
-        'string.pattern.base': 'Password must contain at least one uppercase letter and one symbol',
-    })
-  confirmPassword: Joi.valid(Joi.ref("password")).required(),
+      "string.empty": "Password is required",
+      "string.min": "Password must be at least 8 characters long",
+      "string.pattern.base":
+        "Password must contain at least one uppercase letter and one symbol",
+    }),
+  confirmPassword: Joi.any()
+    .equal(Joi.ref("password"))
+    .required()
+    .label("Confirm Password")
+    .messages({
+      "any.only": "Passwords do not match",
+      "any.required": "Confirm password is required",
+    }),
 });
