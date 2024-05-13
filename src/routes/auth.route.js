@@ -11,4 +11,6 @@ authRoute.post(
   authController.register,
 );
 
+authRoute.post("/login", authController.login);
+
 export default authRoute;

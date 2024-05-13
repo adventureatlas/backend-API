@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../initialize.js";
-import bcrypt from "bcrypt";
+import encryptPassword from "../../helpers/password.encrypt.js";
 
 const User = sequelize.define(
   "User",
@@ -30,9 +30,7 @@ const User = sequelize.define(
   {
     hooks: {
       beforeCreate: async (user) => {
-        const saltRounds = 10;
-        const hashedPassword = await bcrypt.hash(user.password, saltRounds);
-        user.password = hashedPassword;
+        user.password = await encryptPassword(user.password);
       },
     },
   },

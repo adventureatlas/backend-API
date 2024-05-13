@@ -1,5 +1,5 @@
 import passport from "passport";
-import User from "../database/model/user.js";
+import User from "../database/models/user.js";
 import { Strategy as JwtStrategy } from "passport-jwt";
 import { ExtractJwt } from "passport-jwt";
 import dotenv from "dotenv";

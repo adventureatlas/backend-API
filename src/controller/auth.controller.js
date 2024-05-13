@@ -16,3 +16,13 @@ export const register = async (req, res) => {
     res.status(err.statusCode || 500).json({ message: err.message });
   }
 };
+
+export const login = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const data = await authService.login(email, password);
+    res.status(200).json({ message: "login successful", data });
+  } catch (err) {
+    res.status(err.statusCode || 500).json({ message: err.message });
+  }
+};
