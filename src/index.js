@@ -1,6 +1,6 @@
 import express from "express";
 // import passport from "./middleware/passport.js";
-import authRoute from "./routes/auth.route.js";
+import authRoute from "./auth/authRoute.js";
 
 const app = express();
 

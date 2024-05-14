@@ -1,5 +1,5 @@
 import User from "../database/models/user.js";
-import newError from "../exception/error.js";
+import newError from "../exceptions/error.js";
 import bcrypt from "bcrypt";
 
 export const register = async (
