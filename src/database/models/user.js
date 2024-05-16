@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize";
 import { sequelize } from "../initialize.js";
-import encryptPassword from "../../helpers/encryptPassword.js";
+import { encryptPassword } from "../../helpers/authHelpers.js";
 
 const User = sequelize.define(
   "User",
